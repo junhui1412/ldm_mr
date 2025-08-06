@@ -13,7 +13,7 @@
 Other versions of PyTorch with proper CUDA should work but are not fully tested.
 
 ```bash
-# in CGRS folder
+# in ldm_mr folder
 conda create -n ldm_mr python=3.10
 conda activate ldm_mr
 
