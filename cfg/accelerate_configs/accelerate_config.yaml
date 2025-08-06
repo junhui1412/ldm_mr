@@ -1,0 +1,26 @@
+compute_environment: LOCAL_MACHINE
+distributed_type: MULTI_GPU
+#deepspeed_config:
+#  deepspeed_multinode_launcher: standard
+#  gradient_accumulation_steps: 2
+#  offload_optimizer_device: none
+#  offload_param_device: none
+#  zero3_init_flag: false
+#  zero3_save_16bit_model: false
+#  zero_stage: 2
+#distributed_type: DEEPSPEED
+downcast_bf16: 'bf16'
+gpu_ids: all
+machine_rank: 0
+main_process_ip: 127.0.0.1 # main machine ip
+main_process_port:  # main machine port
+main_training_function: main
+mixed_precision: 'bf16' # choose from 'no', 'fp16', 'bf16', 'fp8'
+num_machines: 1  # can be modified in the start command
+num_processes: 1 # all multi-gpu cards, not per machine, can be modified in the start command
+rdzv_backend: static
+same_network: True
+tpu_env: []
+tpu_use_cluster: false
+tpu_use_sudo: false
+use_cpu: false

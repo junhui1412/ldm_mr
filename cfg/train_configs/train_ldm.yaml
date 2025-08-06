@@ -1,0 +1,43 @@
+# logging:
+output_dir: ./runs
+project_name: train_ldm
+exp_name: brain
+logging_dir: logs
+report_to: wandb
+sample_every: 200 # sample every this many steps
+sample_steps: 250 # sample inference steps
+resume_from_checkpoint: latest
+# model
+pretrained:
+vae_path: model_weight/stable-diffusion-3-medium-diffusers
+# data setup
+## dataset
+train_data_path: ./brain_multicoil/multicoil_train_processed1/
+val_data_path: ./brain_multicoil/multicoil_val_processed/
+mask_type: equispaced_fraction
+acceleration: [1, 16]
+center_fraction: [] # if random_acc is True, center_fraction is empty list
+random_acc: True
+start_slice: 0 # start slice of per volume
+num_slices: 0 # number slices of per volume, '0' means all slices
+
+batch_size: 32 # batch size of each GPU  # 32 for 40G GPU
+resolution: 320 # resolution of input image
+# precision
+allow_tf32: True
+mixed_precision: bf16 # choices=["no", "fp16", "bf16"]
+# optimization
+max_train_steps: 200000
+checkpointing_steps: 100
+checkpoints_total_limit: 10
+gradient_accumulation_steps: 1
+learning_rate: 2.e-6
+adam_beta1: 0.9
+adam_beta2: 0.999
+adam_weight_decay: 0.
+adam_epsilon: 1.e-8
+max_grad_norm: 1.0
+# seed
+seed: 0
+# cpu num workers
+num_workers: 8

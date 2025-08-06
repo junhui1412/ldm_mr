@@ -1,0 +1,8 @@
+accelerate
+wandb
+diffusers
+omegaconf
+h5py
+einops
+pandas
+torchmetrics
