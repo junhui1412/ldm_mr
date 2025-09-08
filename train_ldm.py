@@ -156,9 +156,9 @@ class MRIDataset(Dataset):
 
     def normalize(self, img):
         '''
-            Estimate mvue from coils and normalize with 99% percentile.
+            Normalize with 99% percentile.
         '''
-        scaling = torch.quantile(img.abs(), 0.99)
+        scaling = torch.quantile(utils.complex_abs(img), 0.99)
         return img / scaling
 
     def __getitem__(self, idx):
